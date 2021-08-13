@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import { TodosFilter } from '@components/TodosFilter';
 import { mapStateToProps, mapDispatchToProps } from '@services/initAppProps';
 import '@styles/main.css';
+import { Loader } from './components/Loader';
 
 
 interface AppProps {
@@ -16,20 +17,24 @@ interface AppProps {
     filter: any;
     todosActions: any;
     filterActions: any;
+    isLoading: boolean;
 }
 
-const App = ({todos, todosActions, filterActions, filter} : AppProps) => {
+const App = ({todos, todosActions, filterActions, filter, isLoading} : AppProps) => {
   const classes = useStyles();
   const { addTodo, toggleTodo, deleteTodo, loadTodos, deleteAllTodos } = todosActions;
   const { setFilter } = filterActions;
 
-  useEffect(() => { loadTodos(todos.length, 5) }, [loadTodos]);
+  useEffect(() => { 
+    setTimeout(() => { loadTodos(todos.length, 7)  }, 2000);
+  }, [loadTodos]);
 
   return (
     <div className="main">
       <Card className={classes.todoList}>
         <Typography variant="h4">Todo List</Typography>
         <TodosFilter setFilter={setFilter} filter={filter} />
+        {isLoading && <Loader />}
         <TodoList 
           todos={todos} 
           toggleTodo={toggleTodo} 

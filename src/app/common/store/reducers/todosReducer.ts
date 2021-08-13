@@ -34,12 +34,16 @@ export const todosReducer = (state: any = initialState, action: any) => {
       case LOAD_TODOS_SUCCESS:
         return {
           ...state,
-          todos: [...state.todos, ...action.todos.map((todo: any) => ({ ...todo }))]
+          todos: [...state.todos, ...action.todos.map((todo: any) => ({ ...todo }))],
+          isLoading: false
         }
       case LOAD_TODOS_FAILURE:
         return state;
       case LOAD_TODOS_STARTED:
-        return state;
+        return {
+          ...state,
+          isLoading: true
+        }
       default:
         return state;
     }

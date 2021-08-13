@@ -16,6 +16,7 @@ export const getVisibleTodos = (todos: Todo[], filter: any) => {
   
 export const mapStateToProps = (state: any) => ({
       todos: getVisibleTodos(state.todosState.todos, state.filterState),
+      isLoading: state.todosState.isLoading,
       filter: state.filterState
 });
 

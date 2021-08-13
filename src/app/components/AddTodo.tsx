@@ -39,7 +39,7 @@ export const AddTodo = ({addTodo, loadTodos, todosCount, deleteAllTodos} : AddTo
       </div>
       <div>
           <Button 
-              onClick={() => loadTodos(todosCount, 5)}
+              onClick={() => loadTodos(todosCount, 7)}
               variant="contained" color="primary"
           >
               Load More

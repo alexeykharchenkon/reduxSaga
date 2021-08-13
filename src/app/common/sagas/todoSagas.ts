@@ -12,11 +12,12 @@ function* watchAddTodo() {
   
 function* loadTodosAsync({ payload } : any) : any {
   yield put(loadTodosStarted());
+  
   try {
       const todos = yield call(() =>
-          axios.get(`https://jsonplaceholder.typicode.com/todos?_start=${payload.from}&_limit=${payload.limit}`)
-          .then(res => res.data)
-          );
+        axios.get(`https://jsonplaceholder.typicode.com/todos?_start=${payload.from}&_limit=${payload.limit}`)
+        .then(res => res.data)
+      );
       
       yield put(loadTodosSuccess(todos));
     } catch (error) {

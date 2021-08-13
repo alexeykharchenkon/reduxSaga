@@ -3,5 +3,6 @@ export const initialState = {
     id: '0',
     title: "Hello Redux",
     completed: false
-  }]
+  }],
+  isLoading: true
 }
